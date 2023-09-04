@@ -83,10 +83,10 @@ function DailyAdventure() {
   }, [questionState]);
 
   return (
-    <div className="flex flex-col items-center bg-[#F2E9FF] h-screen overflow-hidden">
-      <div className="flex flex-col items-center bg-[url('./images/bgQuiz.png')] h-screen w-screen bg-transparent bg-opacity-50 bg-contain">
+    <div className="flex flex-col items-center bg-[#F2E9FF] h-screen w-screen overflow-hidden">
+      <div className="flex flex-col items-center bg-[url('./images/bgQuiz.png')] h-screen w-screen bg-transparent bg-opacity-50 bg-cover">
         <span className="w-[212px] h-[126px] text-[35px] text-[#3D3D3D] bg-[url('./images/blueCloud.png')] bg-cover font-[700] flex justify-center items-center">{`Day ${13}`}</span>
-        <div className="h-[320px] w-[380px] bg-[rgba(255,255,255,0.50)] rounded-[20px] mt-[18px] p-[16px] flex flex-col justify-center items-center">
+        <div className="w-[380px] bg-[rgba(255,255,255,0.50)] rounded-[20px] mt-[18px] p-3 flex flex-col justify-center items-center">
           <div className="flex flex-row">
             {activeIndex >= 0 ? (
               selectedList.includes(0) ? (
@@ -233,16 +233,16 @@ function DailyAdventure() {
           </div>
         </div>
         {questionState === "right" ? (
-          <div className="w-[100px] h-[100px] mt-[-45px] bg-[url('./images/right.png')] bg-cover"></div>
+          <div className="w-[72px] h-[72px] mt-[-45px] bg-[url('./images/right.png')] bg-cover"></div>
         ) : null}
         {questionState === "wrong" ? (
-          <div className="w-[100px] h-[100px] mt-[-45px] bg-[url('./images/wrong.png')] bg-cover"></div>
+          <div className="w-[72px] h-[72px] mt-[-45px] bg-[url('./images/wrong.png')] bg-cover"></div>
         ) : null}
         {questionState === "null" ? (
-          <div className="w-[100px] h-[100px] mt-[-45px]"></div>
+          <div className="w-[72px] h-[72px] mt-[-45px]"></div>
         ) : null}
         {/* <div className="w-[335px] h-[88px] bg-white rounded-[20px] shadow-[0_2px_2px_0px_rgba(0,0,0,0.1)] mt-[11px]"></div> */}
-        <div className="flex flex-col mt-[10px]">
+        <div className="flex flex-col mt-1">
           <div className="bg-orange-400 w-[111px] h-[38px] py-[10px] px-[24px] rounded-[30px] text-[16px] text-white font-bold flex justify-center items-center mb-[-19px] z-10">
             단어 설명
           </div>
@@ -250,7 +250,7 @@ function DailyAdventure() {
             {meanings[activeIndex]}
           </div>
         </div>
-        <div className="h-[200px] w-full bg-white rounded-tl-3xl rounded-tr-3xl shadow absolute bottom-[0px] pt-[33px] pl-[16px] pb-[55px] pr-[16px] flex flex-col flex-wrap">
+        <div className="w-full h-48 bg-white rounded-tl-3xl rounded-tr-3xl shadow absolute bottom-[0px] pt-[33px] pl-[16px] pb-[55px] pr-[16px] flex flex-col flex-wrap">
           {letterData.map((item, index) => {
             return selectedList.includes(index) ? (
               <NoBox></NoBox>
