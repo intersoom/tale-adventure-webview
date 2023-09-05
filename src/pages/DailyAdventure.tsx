@@ -90,7 +90,7 @@ function DailyAdventure() {
     <div className="flex flex-col items-center bg-[#F2E9FF] h-screen w-screen overflow-hidden">
       <div className="flex flex-col items-center bg-[url('./images/bgQuiz.png')] h-screen w-screen bg-transparent bg-opacity-50 bg-cover">
         <span className="w-[212px] h-[126px] text-[35px] text-[#3D3D3D] bg-[url('./images/blueCloud.png')] bg-cover font-[700] flex justify-center items-center mt-4">{`Day ${1}`}</span>
-        <div className="w-[380px] bg-[rgba(255,255,255,0.50)] rounded-[20px] mt-[18px] p-3 flex flex-col justify-center items-center">
+        <div className="w-[380px] h-80 bg-[rgba(255,255,255,0.50)] rounded-[20px] mt-[18px] p-3 flex flex-col justify-center items-center">
           <div className="flex flex-row">
             {activeIndex >= 0 ? (
               selectedList.includes(0) ? (
