@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import ActiveBox from "../components/ActiveBox";
 import BlankBox from "../components/BlankBox";
 import NoBox from "../components/NoBox";
-import { dummyData, letterData, meanings } from "../utils/data";
+import { letterData, meanings } from "../utils/data";
 import WordBox from "../components/WordBox";
+import Toast from "../components/Toast";
 
 function DailyAdventure() {
   const [activeIndex, setActiveIndex] = useState(0);
-  // const [selectedWord, setSelectedWord] = useState<string>("");
   const [selectedList, setSelectedList] = useState<number[]>([]);
   const [questionState, setQuestionState] = useState<
     "wrong" | "null" | "right"
   >("null");
+  const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
     // 0 -> 1
@@ -72,6 +73,9 @@ function DailyAdventure() {
       selectedList.includes(13)
     ) {
       setQuestionState("right");
+      setTimeout(() => {
+        setDone(true);
+      }, 300);
     }
   }, [selectedList, activeIndex]);
 
@@ -85,7 +89,7 @@ function DailyAdventure() {
   return (
     <div className="flex flex-col items-center bg-[#F2E9FF] h-screen w-screen overflow-hidden">
       <div className="flex flex-col items-center bg-[url('./images/bgQuiz.png')] h-screen w-screen bg-transparent bg-opacity-50 bg-cover">
-        <span className="w-[212px] h-[126px] text-[35px] text-[#3D3D3D] bg-[url('./images/blueCloud.png')] bg-cover font-[700] flex justify-center items-center">{`Day ${13}`}</span>
+        <span className="w-[212px] h-[126px] text-[35px] text-[#3D3D3D] bg-[url('./images/blueCloud.png')] bg-cover font-[700] flex justify-center items-center mt-4">{`Day ${1}`}</span>
         <div className="w-[380px] bg-[rgba(255,255,255,0.50)] rounded-[20px] mt-[18px] p-3 flex flex-col justify-center items-center">
           <div className="flex flex-row">
             {activeIndex >= 0 ? (
@@ -242,7 +246,7 @@ function DailyAdventure() {
           <div className="w-[72px] h-[72px] mt-[-45px]"></div>
         ) : null}
         {/* <div className="w-[335px] h-[88px] bg-white rounded-[20px] shadow-[0_2px_2px_0px_rgba(0,0,0,0.1)] mt-[11px]"></div> */}
-        <div className="flex flex-col mt-1">
+        <div className="flex flex-col mt-[-10px]">
           <div className="bg-orange-400 w-[111px] h-[38px] py-[10px] px-[24px] rounded-[30px] text-[16px] text-white font-bold flex justify-center items-center mb-[-19px] z-10">
             단어 설명
           </div>
@@ -287,6 +291,20 @@ function DailyAdventure() {
           })}
         </div>
       </div>
+      {done && (
+        <div className="absolute flex flex-col items-center top-1/3 z-20">
+          <span className="bg-[url('./images/done.png')] w-[70px] h-[70px] bg-cover"></span>
+          <Toast>
+            {
+              <>
+                <span className="bg-[url('./images/stars.png')] w-[34px] h-[24px] bg-cover mr-2"></span>
+                <p>뒤로가기를 눌러주세요!</p>
+                <span className="bg-[url('./images/cat.png')] w-[34px] h-[34px] bg-cover ml-2"></span>
+              </>
+            }
+          </Toast>
+        </div>
+      )}
     </div>
   );
 }
